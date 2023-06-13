@@ -16,7 +16,6 @@ class CustomerRegister(BaseModel):
 class CustomerSubscribe(CustomerRegister):
     plan_id: int
     valid_till: date
-    plan_check: PlanFinal
 
     @validator('valid_till')
     def date_check(cls, v):
@@ -24,6 +23,8 @@ class CustomerSubscribe(CustomerRegister):
             raise ValueError('subscription expired')
         return v
     
+class CustomerGet(CustomerSubscribe):
+    plan_check: PlanFinal
     
     class Config:
         orm_mode=True

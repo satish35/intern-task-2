@@ -11,8 +11,7 @@ class Plan(Base):
 class Customer_plan(Base):
     __tablename__ = "customer"
 
-    customer_id = customer_id= Column(String, nullable=False, index=True, primary_key=True)
+    customer_id= Column(String, nullable=False, index=True, primary_key=True)
     p_id= Column(INTEGER, ForeignKey('plan.plan_id', ondelete="CASCADE"))
     valid_till = Column(DATE)
-
     plan_check=relationship('Plan')
